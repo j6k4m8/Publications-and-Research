@@ -11,5 +11,12 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v2
 
+            - name: Change ImageMagick policy to allow pdf->png conversion.
+              run: |
+                  sudo sed -i 's/^.*policy.*coder.*none.*PDF.*//' /etc/ImageMagick-6/policy.xml
+
             - name: Run readme generator
               run: bash .github/workflows/generate-readme.sh
+
+            - name: Debug: Show diff
+              run: git status
