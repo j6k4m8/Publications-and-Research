@@ -1,5 +1,3 @@
-cd ../../
-
 cd posters
 mkdir -p thumbnails
 for f in *.pdf; do convert -thumbnail x400 -background white -alpha remove "$f" "thumbnails/${f%.pdf}.png"; done

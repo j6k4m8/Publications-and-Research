@@ -14,7 +14,7 @@ For a complete CV, see [here](https://jordan.matelsky.com/resume/).
 
 """
 
-image_template = "<a href='{}'><img src={} width=300 /></a>&nbsp;"
+image_template = "<a href='{}'><img src={} width='250' /></a>&nbsp;"
 
 page += "## Papers\n\n"
 
