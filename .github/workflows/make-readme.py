@@ -13,22 +13,68 @@ For a complete CV, see [here](https://jordan.matelsky.com/resume/).
 
 """
 
-image_template = "<a href='{}'><img src={} width='250' /></a>&nbsp;"
+PAPERS_COLUMN_COUNT = 4  # how many papers to a row
+POSTERS_COLUMN_COUNT = 3  # how many posters to a row
+
+image_template = (
+    "<td width='250'><a href='{}'><img src={} /><br /><small>{}</small></a></td>"
+)
+
+
+def extract_details(fpath: str):
+    """
+    Return year, title, and link.
+    """
+    fname = fpath.split("/")[-1]
+    year = fname.split("_")[0]
+    title = " ".join(fname.split("_")[1:]).replace("-", " ")
+    return (year, title, fpath)
+
+
+def generate_document_template(fpath):
+    year, title, link = extract_details(fpath)
+    return image_template.format(
+        link.replace("thumbnails/", "").replace(".png", ".pdf"),
+        link,
+        f"{title} ({year})",
+    )
+
 
 page += "## Papers\n\n"
 
-for paper in glob.glob("papers/thumbnails/*.png"):
-    page += image_template.format(
-        paper.replace("thumbnails/", "").replace(".png", ".pdf"), paper
+papers = glob.glob("papers/thumbnails/*.png")
+
+page += "<table>"
+for i in range(0, len(papers), PAPERS_COLUMN_COUNT):
+    page += (
+        "<tr>"
+        + "".join(
+            [
+                generate_document_template(paper)
+                for paper in papers[i : min(i + PAPERS_COLUMN_COUNT, len(papers))]
+            ]
+        )
+        + "</tr>"
     )
+page += "</table>"
 
 page += "\n\n## Posters\n\n"
 
-for poster in glob.glob("posters/thumbnails/*.png"):
-    page += image_template.format(
-        poster.replace("thumbnails/", "").replace(".png", ".pdf"), poster
-    )
+posters = glob.glob("posters/thumbnails/*.png")
 
+page += "<table>"
+for i in range(0, len(posters), POSTERS_COLUMN_COUNT):
+    page += (
+        "<tr>"
+        + "".join(
+            [
+                generate_document_template(paper)
+                for paper in posters[i : min(i + POSTERS_COLUMN_COUNT, len(posters))]
+            ]
+        )
+        + "</tr>"
+    )
+page += "</table>"
 
 print(page)
 
