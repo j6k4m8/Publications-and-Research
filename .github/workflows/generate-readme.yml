@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
       # https://dev.to/davidwessman/error-when-converting-pdf-to-image-on-github-actions-2m5m
       - name: Allow ImageMagick PDF access
@@ -21,10 +24,13 @@ jobs:
       - name: Run readme generator
         run: bash .github/workflows/generate-readme.sh
 
-      - name: push
-        uses: github-actions-x/commit@v2.7
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Automatically update README with latest thumbnails" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: master
-          commit-message: "Update README.md with latest thumbnails"
-          rebase: "true"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
