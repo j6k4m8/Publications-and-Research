@@ -27,7 +27,7 @@ def extract_details(fpath: str):
     """
     fname = fpath.split("/")[-1]
     year = fname.split("_")[0]
-    title = " ".join(fname.split("_")[1:]).replace("-", " ")
+    title = " ".join(fname.split("_")[1:]).replace("-", " ").replace(".png", "")
     return (year, title, fpath)
 
 
