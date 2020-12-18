@@ -42,7 +42,7 @@ def generate_document_template(fpath):
 
 page += "## Papers\n\n"
 
-papers = glob.glob("papers/thumbnails/*.png")
+papers = sorted(glob.glob("papers/thumbnails/*.png"))
 
 page += "<table>"
 for i in range(0, len(papers), PAPERS_COLUMN_COUNT):
@@ -60,7 +60,7 @@ page += "</table>"
 
 page += "\n\n## Posters\n\n"
 
-posters = glob.glob("posters/thumbnails/*.png")
+posters = sorted(glob.glob("posters/thumbnails/*.png"))
 
 page += "<table>"
 for i in range(0, len(posters), POSTERS_COLUMN_COUNT):
