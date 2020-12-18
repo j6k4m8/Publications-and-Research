@@ -76,5 +76,15 @@ for i in range(0, len(posters), POSTERS_COLUMN_COUNT):
     )
 page += "</table>"
 
+page += """
+
+---
+
+### About this repository
+
+This repository automatically updates this README with thumbnails and links when a PDF is uploaded to the Posters or Papers directories. To make a repo like this for yourself, fork this repository, or add the `.github/workflows` directory to your own project.
+
+"""
+
 print(page)
 
