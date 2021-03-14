@@ -9,7 +9,7 @@ on:
 jobs:
   generate-readme:
     name: Generate a fresh README with the latest documents
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
       - name: Checkout
