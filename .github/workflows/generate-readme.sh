@@ -5,7 +5,8 @@ cd ..
 
 cd papers
 mkdir -p thumbnails
-for f in *.pdf; do convert -thumbnail x400 -background white -alpha remove "$f"[0] "thumbnails/${f%.pdf}.png"; done
+for f in *.pdf; do gs -dNOPAUSE -sDEVICE=pngalpha -r144 -sOutputFile=${f%.pdf}.png $f; done
+#for f in *.pdf; do convert -thumbnail x400 -background white -alpha remove "$f"[0] "thumbnails/${f%.pdf}.png"; done
 cd ..
 
 python3 .github/workflows/make-readme.py > README.md
