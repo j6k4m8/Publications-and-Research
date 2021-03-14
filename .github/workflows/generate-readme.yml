@@ -19,9 +19,11 @@ jobs:
           fetch-depth: 0
 
       # https://dev.to/davidwessman/error-when-converting-pdf-to-image-on-github-actions-2m5m
+      # https://stackoverflow.com/questions/52861946/imagemagick-not-authorized-to-convert-pdf-to-an-image
+      # sudo sed -i 's/^.*policy.*coder.*none.*PDF.*//' /etc/ImageMagick-6/policy.xml
       - name: Allow ImageMagick PDF access
         run: |
-          sudo sed -i 's/^.*policy.*coder.*none.*PDF.*//' /etc/ImageMagick-7/policy.xml
+          sudo rm /etc/ImageMagick-6/policy.xml
 
       - name: Run readme generator
         run: bash .github/workflows/generate-readme.sh
