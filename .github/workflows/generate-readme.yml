@@ -24,6 +24,7 @@ jobs:
       - name: Allow ImageMagick PDF access
         run: |
           sudo rm /etc/ImageMagick-6/policy.xml
+          sudo apt-get install ghostscript
 
       - name: Run readme generator
         run: |
