@@ -27,7 +27,6 @@ jobs:
 
       - name: Run readme generator
         run: |
-          sudo rm /etc/ImageMagick-6/policy.xml
           bash .github/workflows/generate-readme.sh
 
       - name: Commit files
