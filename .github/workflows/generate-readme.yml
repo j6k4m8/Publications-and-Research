@@ -9,7 +9,7 @@ on:
 jobs:
   generate-readme:
     name: Generate a fresh README with the latest documents
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout
@@ -21,7 +21,7 @@ jobs:
       # https://dev.to/davidwessman/error-when-converting-pdf-to-image-on-github-actions-2m5m
       - name: Allow ImageMagick PDF access
         run: |
-          sudo sed -i 's/^.*policy.*coder.*none.*PDF.*//' /etc/ImageMagick-6/policy.xml
+          sudo sed -i 's/^.*policy.*coder.*none.*PDF.*//' /etc/ImageMagick-7/policy.xml
 
       - name: Run readme generator
         run: bash .github/workflows/generate-readme.sh
