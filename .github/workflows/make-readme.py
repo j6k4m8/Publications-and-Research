@@ -51,8 +51,10 @@ def _is_youtube_link(link_text: str) -> bool:
 
 def create_thumbnail_for_video(link_text: str) -> str:
     if _is_youtube_link(link_text):
-        return f"![](http://img.youtube.com/vi/{link_text.split('?v=')[1]}/0.jpg)"
-    return "![]()"
+        return (
+            f"<img src='http://img.youtube.com/vi/{link_text.split('?v=')[1]}/0.jpg' />"
+        )
+    return "<img />"
 
 
 def generate_talk_template(talk_dict):
@@ -64,7 +66,7 @@ def generate_talk_template(talk_dict):
     link = talk_dict["Link"]
     thumbnail = create_thumbnail_for_video(talk_dict["Link"])
 
-    return f"[{thumbnail} {title}]({link})"
+    return f"<a href='{link}'>{thumbnail}<br /><small>{title}</small></a>"
 
 
 ################################################################################ PAPERS
