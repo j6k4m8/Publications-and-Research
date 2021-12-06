@@ -60,6 +60,7 @@ def generate_talk_template(talk_dict):
     """
     The talk dict contains Title,Year,Venue,Link key-vals.
     """
+    print(talk_dict)
     # we need to generate a thumbnail, link URL, and title:
     title = f"{talk_dict['Title']} ({talk_dict['Venue']} {talk_dict['Year']})"
     link = talk_dict["Link"]
