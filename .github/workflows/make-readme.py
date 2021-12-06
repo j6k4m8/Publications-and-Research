@@ -1,9 +1,8 @@
 import csv
 import glob
-from os import link
 
 page = """\
-# Publications & Research
+<h1 align=center>Publications & Research</h1>
 
 <p align=center>
 <a href="https://scholar.google.com/citations?user=QgJ7CPUAAAAJ&hl=en"><img src="https://img.shields.io/badge/Google Scholar-4285F4?logo=Google+Scholar&style=for-the-badge&logoColor=black" /></a>
@@ -60,7 +59,6 @@ def generate_talk_template(talk_dict):
     """
     The talk dict contains Title,Year,Venue,Link key-vals.
     """
-    print(talk_dict)
     # we need to generate a thumbnail, link URL, and title:
     title = f"{talk_dict['Title']} ({talk_dict['Venue']} {talk_dict['Year']})"
     link = talk_dict["Link"]
@@ -113,9 +111,15 @@ page += "</table>"
 
 page += "\n\n## Talks\n\n"
 
-talks = []
-with open("talks/talks.csv", "r") as fh:
-    talks = [row for row in csv.reader(fh)]
+
+def read_csv(filename):
+    with open(filename, "r") as f:
+        file_data = csv.reader(f)
+        headers = next(file_data)
+        return [dict(zip(headers, i)) for i in file_data]
+
+
+talks = read_csv("talks/talks.csv")
 
 page += "<table>"
 for i in range(0, len(talks), TALKS_COLUMN_COUNT):
