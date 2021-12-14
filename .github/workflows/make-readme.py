@@ -66,7 +66,7 @@ def generate_talk_template(talk_dict):
     link = talk_dict["Link"]
     thumbnail = create_thumbnail_for_video(talk_dict["Link"])
 
-    return f"<a href='{link}'>{thumbnail}<br /><small>{title}</small></a>"
+    return f"<td><a href='{link}'>{thumbnail}<br /><small>{title}</small></a></td>"
 
 
 ################################################################################ PAPERS
