@@ -9,11 +9,11 @@ on:
 jobs:
   generate-readme:
     name: Generate a fresh README with the latest documents
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
           fetch-depth: 0
