@@ -18,7 +18,7 @@ For a complete CV, see [here](https://jordan.matelsky.com/resume/).
 
 ## Talks
 
-<table><tr><td><a href='https://www.youtube.com/watch?v=fEv94br2V00'><img src='http://img.youtube.com/vi/fEv94br2V00/0.jpg' /><br /><small>Predicting the connectome with neuron family trees (NeuroMatch 4.0 2021)</small></a></td></tr></table>
+<table><tr><td><a href='https://www.youtube.com/watch?v=Krr89_b0QAI'><img src='http://img.youtube.com/vi/Krr89_b0QAI/0.jpg' /><br /><small>Blending Brains: Tales from the Neuro Department (Blender Conference 2025 2025)</small></a></td><td><a href='https://www.youtube.com/watch?v=fEv94br2V00'><img src='http://img.youtube.com/vi/fEv94br2V00/0.jpg' /><br /><small>Predicting the connectome with neuron family trees (NeuroMatch 4.0 2021)</small></a></td></tr></table>
 
 ---
 
